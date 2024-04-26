@@ -1,43 +1,23 @@
-Shared Dependencies for the Website Comment Chrome Extension:
+1. "openai" - This is the OpenAI Python client that will be used across all files to interact with the OpenAI API. It will be used to send user messages and receive responses.
 
-Exported Variables:
-- `apiKeys`: Object containing API keys for different GenAI providers.
-- `userSettings`: Object containing user preferences such as `max_tokens`, `temperature`, etc.
-- `chatHistory`: Object to store chat history per tab.
-- `currentTabContext`: String containing the Markdown-converted content of the current tab.
+2. "flask" - This is a web framework for Python that will be used in "chat_interface.py" and "main.py" to create and manage the chat interface.
 
-Data Schemas:
-- `ProviderSettings`: Schema for storing settings for each GenAI provider including `model`, `serverURL`, `apiKey`, `max_tokens`, `temperature`, etc.
-- `TabChatHistory`: Schema for storing chat history associated with a specific tab ID.
-- `PageContext`: Schema for storing the cleaned and converted context of the current page.
+3. "flask_socketio" - This is a Flask extension that will be used in "stream_handler.py" and "main.py" to handle real-time communication between the server and the client.
 
-ID Names of DOM Elements:
-- `chatWidgetButton`: ID for the floating button to open the chat widget.
-- `chatWidgetContainer`: ID for the container of the chat widget.
-- `chatInput`: ID for the input text field in the chat widget.
-- `sendButton`: ID for the send button in the chat widget.
-- `chatHistoryContainer`: ID for the container displaying chat history messages.
-- `settingsForm`: ID for the settings form in the options page.
-- `apiKeyInput`: ID for the input field for API keys in the settings form.
+4. "requests" - This is a Python library for making HTTP requests. It will be used in "openai_api.py" to make requests to the OpenAI API.
 
-Message Names:
-- `injectChatWidget`: Message name for the command to inject the chat widget into the current page.
-- `saveChatHistory`: Message name for the command to save the current chat history.
-- `updateSettings`: Message name for the command to update user settings.
-- `fetchPageContext`: Message name for the command to fetch the current page context.
+5. "chat_message" - This is a variable that will be used across "chat_interface.py", "stream_handler.py", and "openai_api.py" to store and manipulate the user's chat message.
 
-Function Names:
-- `initChatWidget`: Function to initialize the chat widget on the page.
-- `sendMessage`: Function to send a message from the chat input.
-- `receiveMessage`: Function to receive and display a message in the chat widget.
-- `saveSettings`: Function to save user settings to Chrome Storage.
-- `loadSettings`: Function to load user settings from Chrome Storage.
-- `convertToMarkdown`: Function in `markdownConverter.js` to convert HTML content to Markdown.
-- `cleanDOM`: Function in `domCleaner.js` to clean up non-content HTML tags.
-- `storeChatHistory`: Function to store chat history in Chrome Storage.
-- `retrieveChatHistory`: Function to retrieve chat history from Chrome Storage.
-- `updateChatHistory`: Function to update the chat history in the UI.
-- `injectContentScript`: Function in `background.js` to inject the content script into the current tab.
-- `fetchGenAIResponse`: Function in `api.js` to fetch responses from GenAI endpoints.
+6. "openai_response" - This is a variable that will be used across "openai_api.py", "stream_handler.py", and "chat_interface.py" to store and manipulate the response from the OpenAI API.
 
-Please note that the actual implementation may require additional shared dependencies or slight variations in naming conventions based on the specific requirements and coding standards.
+7. "stream_response" - This is a function that will be defined in "stream_handler.py" and used in "main.py" to stream the response from the OpenAI API to the chat interface.
+
+8. "get_openai_response" - This is a function that will be defined in "openai_api.py" and used in "stream_handler.py" and "main.py" to get the response from the OpenAI API.
+
+9. "chat_input" - This is the id name of the DOM element in the chat interface where the user enters their message.
+
+10. "chat_output" - This is the id name of the DOM element in the chat interface where the response from the OpenAI API is displayed.
+
+11. "message_event" - This is the name of the event that is emitted when the user sends a chat message. It will be used in "chat_interface.py", "stream_handler.py", and "main.py".
+
+12. "response_event" - This is the name of the event that is emitted when a response is received from the OpenAI API. It will be used in "openai_api.py", "stream_handler.py", and "chat_interface.py".
