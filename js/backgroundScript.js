@@ -14,14 +14,6 @@ chrome.tabs.onUpdated.addListener( ( tabId, changeInfo, tab ) =>
   }
 } );
 
-chrome.tabs.onActivated.addListener( ( activeInfo ) =>
-{
-  chrome.scripting.executeScript( {
-    target: { tabId: activeInfo.tabId },
-    files: [ 'js/contentScript.js' ]
-  } );
-} );
-
 chrome.runtime.onMessage.addListener( ( request, sender, sendResponse ) =>
 {
   if ( request.message === 'injectChatWidget' )
