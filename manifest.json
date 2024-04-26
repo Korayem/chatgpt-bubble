@@ -3,13 +3,14 @@
   "name": "Website Comment Chrome Extension",
   "version": "1.0",
   "description": "Chat with the current page context, ask questions, get summaries, and more.",
-  "permissions": ["storage", "activeTab", "scripting"],
+  "permissions": ["storage", "activeTab", "scripting", "tabs", "chrome-extension://*/*"],
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
-      "16": "images/icon16.png",
-      "48": "images/icon48.png",
-      "128": "images/icon128.png"
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "64": "icons/icon64.png",
+      "128": "icons/icon128.png"
     }
   },
   "background": {
@@ -17,7 +18,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
+      "matches": ["<all_urls>", "https://*/*"],
       "js": ["content.js"]
     }
   ],
@@ -29,14 +30,16 @@
     }
   ],
   "icons": {
-    "16": "images/icon16.png",
-    "48": "images/icon48.png",
-    "128": "images/icon128.png"
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "64": "icons/icon64.png",
+    "128": "icons/icon128.png"
   },
   "host_permissions": [
     "https://api.openai.com/*",
     "https://gemini.api.google.com/*",
     "https://api.openrouter.com/*",
-    "https://api.claude.com/*"
+    "https://api.claude.com/*",
+    "*://*/*"
   ]
 }
